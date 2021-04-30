@@ -2,6 +2,7 @@ create table "customer" (
 	customer_id serial primary key,
 	name varchar(100),
 	email varchar(320) unique not null,
+	phone varchar(15),
 	address varchar(100) not null
 );
 
@@ -36,3 +37,4 @@ create table "order" (
 	customer_id int not null references customer,
 	product_id int not null references product
 );
+
