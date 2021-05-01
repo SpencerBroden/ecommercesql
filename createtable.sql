@@ -41,7 +41,7 @@ create table "order_product" (
 	quantity integer not null,	
 	total numeric(10,2) not null,
 	customer_id integer not null references customer,
-	product_id integer not null references products,
+	product_id integer not null references product,
 	order_date timestamp with time zone not null
 );
 
