@@ -30,7 +30,7 @@ create table "products" (
 	sku varchar(11) not null,
 	product_name varchar(100) not null,
 	price numeric(10,2) not null,
-	units_in_stock numeric not null,
+	units_in_stock integer not null,
 	description text,
 	category text
 );
@@ -38,10 +38,10 @@ create table "products" (
 create table "order_product" (
 	order_id serial primary key,
 	order_no int not null,
-	quantity numeric not null,
-	order_date timestamp with time zone not null,
+	quantity integer not null,	
 	total numeric(10,2) not null,
 	customer_id int not null references customer,
-	product_id int not null references product
+	product_id int not null references product,
+	order_date timestamp with time zone not null
 );
 
