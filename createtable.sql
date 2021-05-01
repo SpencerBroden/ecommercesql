@@ -2,7 +2,7 @@ drop table "customer";
 drop table "product";
 drop table "orders";
 
-
+/* Create Tables */
 create table "customer" (
 	customer_id serial primary key,
 	name varchar(100) not null,
@@ -29,12 +29,14 @@ create table "orders" (
 	product_id integer not null references product	
 );
 
-
+/* Insert */
 insert into customer (name, email, address) values ('Joe','joe@example.com', '111 example st');
 insert into product (product_name, price, units_in_stock) values ('Khaki Pants', 39, 100),
 ('Floral Dress', 25, 100),('Polo Shirt', 27.50, 100),('Winter Gloves', 15, 100),('Jeans', 49, 100);
 insert into orders (quantity, total, order_date, customer_id, product_id) values (1, 26, now(), 1, 1);
 
+
+/* Trigger Function */
 CREATE OR REPLACE FUNCTION checkCustomerEmailExists()  
 RETURNS TRIGGER AS $$
 BEGIN
