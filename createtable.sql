@@ -8,8 +8,8 @@ create table "customer" (
 	name varchar(100) not null,
 	email varchar(320) unique not null,
 	address varchar(100) not null,
-	hash varchar(100)
-	phone varchar(15),
+	hash varchar(100),
+	phone varchar(15)
 );
 
 create table "product" (
