@@ -1,3 +1,10 @@
+drop table "customer";
+drop table "user";
+drop table "guests";
+drop table "products";
+drop table "order_product";
+
+
 create table "customer" (
 	customer_id serial primary key,
 	name varchar(100),
@@ -18,22 +25,21 @@ create table "guest" (
 	customer_id int not null references customer
 );
 
-create table "product" (
+create table "products" (
 	product_id serial primary key,
 	sku varchar(11) not null,
 	product_name varchar(100) not null,
+	price numeric(10,2) not null,
 	units_in_stock numeric not null,
 	description text,
-	category text,
-	price numeric(10,2)
+	category text
 );
 
 create table "order_product" (
 	order_id serial primary key,
 	order_no int not null,
-	payment varchar(50) not null,
 	quantity numeric not null,
-	order_date date not null,
+	order_date timestamp with time zone not null,
 	total numeric(10,2) not null,
 	customer_id int not null references customer,
 	product_id int not null references product
