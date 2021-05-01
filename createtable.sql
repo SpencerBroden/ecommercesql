@@ -7,9 +7,9 @@ drop table "order_product";
 
 create table "customer" (
 	customer_id serial primary key,
-	name varchar(100),
+	name varchar(100) not null,
 	email varchar(320) unique not null,
-	address varchar(100),
+	address varchar(100) not null,
 	phone varchar(15)
 );
 
