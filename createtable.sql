@@ -39,6 +39,7 @@ create table "order_product" (
 
 insert into customer (name, email, address) values ('Joe','joe@example.com', '111 example st');
 insert into login(hash, email) values ('password', 'joe@example.com');
-insert into product (product_name, price, units_in_stock, description) values ('Jeans', 25, 100, 'A pair of nice blue jeans');
+insert into product (product_name, price, units_in_stock, description) values ('Khaki Pants', 39, 100),
+('Floral Dress', 25, 100),('Polo Shirt', 27.50, 100),('Winter Gloves', 15, 100),('Jeans', 49, 100);
 insert into order_product (order_no, quantity, total, order_date, customer_id, product_id) values (1, 1, 26, now(), 1, 1);
 
