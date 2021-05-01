@@ -15,7 +15,7 @@ create table "customer" (
 create table "login" (
 	login_id serial primary key,
 	hash varchar(100) not null,
-	customer_id integer not null references customer
+	email varchar(320) unique not null references customer
 );
 
 create table "product" (
