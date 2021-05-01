@@ -36,12 +36,23 @@ insert into product (product_name, price, units_in_stock) values ('Khaki Pants',
 insert into orders (quantity, total, order_date, customer_id, product_id) values (1, 26, now(), 1, 1);
 
 /* View */
-create view login_user as
+create materialized view login_user as
   select customer_id, hash, email from customer
   where hash is not null;
 
-
 /* Trigger Function */
+CREATE OR REPLACE FUNCTION tg_refresh_my_mv()
+RETURNS trigger LANGUAGE plpgsql AS $$
+BEGIN
+    REFRESH MATERIALIZED VIEW CONCURRENTLY my_mv;
+    RETURN NULL;
+END;
+$$;
+
+CREATE TRIGGER tg_refresh_my_mv AFTER INSERT OR UPDATE OR DELETE
+ON customer
+FOR EACH STATEMENT EXECUTE PROCEDURE tg_refresh_my_mv();
+
 CREATE OR REPLACE FUNCTION checkCustomerEmailExists()  
 RETURNS TRIGGER AS $$
 BEGIN
