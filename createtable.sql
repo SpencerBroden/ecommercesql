@@ -1,6 +1,5 @@
 drop table "customer";
 drop table "user";
-drop table "guests";
 drop table "product";
 drop table "order_product";
 
@@ -13,9 +12,9 @@ create table "customer" (
 	phone varchar(15)
 );
 
-create table "user" (
+create table "login" (
 	user_id serial primary key,
-	password varchar(100) not null,
+	hash varchar(100) not null,
 	customer_id integer not null references customer
 );
 
@@ -39,6 +38,7 @@ create table "order_product" (
 
 
 insert into customer (name, email, address) values ('Joe','joe@example.com', '111 example st');
+insert into user(hash, customer_id) values ('password', 1);
 insert into product (product_name, price, units_in_stock, description) values ('Jeans', 25, 100, 'A pair of nice blue jeans');
-insert into order_product (order_no, quantity, total, order_date, customer_id, product_id) values (1,1,26, now(),1,1);
+insert into order_product (order_no, quantity, total, order_date, customer_id, product_id) values (1, 1, 26, now(), 1, 1);
 
