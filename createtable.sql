@@ -35,6 +35,11 @@ insert into product (product_name, price, units_in_stock) values ('Khaki Pants',
 ('Floral Dress', 25, 100),('Polo Shirt', 27.50, 100),('Winter Gloves', 15, 100),('Jeans', 49, 100);
 insert into orders (quantity, total, order_date, customer_id, product_id) values (1, 26, now(), 1, 1);
 
+/* View */
+create view login_user as
+  select customer_id, hash, email from customer
+  where hash is not null;
+
 
 /* Trigger Function */
 CREATE OR REPLACE FUNCTION checkCustomerEmailExists()  
