@@ -1,5 +1,5 @@
 drop table "customer";
-drop table "user";
+drop table "login";
 drop table "product";
 drop table "order_product";
 
