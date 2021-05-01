@@ -28,7 +28,7 @@ create table "product" (
 	price numeric(10,2)
 );
 
-create table "order" (
+create table "order_product" (
 	order_id serial primary key,
 	order_no int not null,
 	payment varchar(50) not null,
