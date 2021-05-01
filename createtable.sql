@@ -13,7 +13,7 @@ create table "customer" (
 );
 
 create table "login" (
-	user_id serial primary key,
+	login_id serial primary key,
 	hash varchar(100) not null,
 	customer_id integer not null references customer
 );
