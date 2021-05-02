@@ -44,7 +44,7 @@ create materialized view login_user as
 CREATE OR REPLACE FUNCTION tg_refresh_my_mv()
 RETURNS trigger LANGUAGE plpgsql AS $$
 BEGIN
-    REFRESH MATERIALIZED VIEW CONCURRENTLY my_mv;
+    REFRESH MATERIALIZED VIEW CONCURRENTLY login_user;
     RETURN NULL;
 END;
 $$;
